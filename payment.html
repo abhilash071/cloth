@@ -2,49 +2,31 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Payment - Cloth</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <title>Payment | Cloth</title>
+  <style>
+    body { font-family:sans-serif; background:#f4f4f4; display:flex; justify-content:center; align-items:center; min-height:100vh; }
+    .payment-box { background:#fff; padding:30px; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.1); width:400px; }
+    h2 { margin-bottom:20px; text-align:center; }
+    input { width:100%; padding:12px; margin:10px 0; border:1px solid #ccc; border-radius:6px; }
+    button { width:100%; padding:12px; background:#111; color:#fff; border:none; border-radius:6px; cursor:pointer; }
+    button:hover { background:#ff6b6b; }
+  </style>
 </head>
 <body>
-  <header class="navbar">
-    <div class="logo">Cloth</div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="cart.html">Cart</a>
-    </nav>
-  </header>
-
-  <section class="products">
+  <div class="payment-box">
     <h2>Payment</h2>
-    <form class="payment-form" onsubmit="goToThankYou(event)">
-      <label>Card Number
-        <input type="text" maxlength="16" required>
-      </label>
-      <label>Expiry Date
-        <input type="text" placeholder="MM/YY" required>
-      </label>
-      <label>CVV
-        <input type="password" maxlength="3" required>
-      </label>
-      <button type="submit" class="btn" style="margin-top:1.5rem;">Proceed to Pay</button>
-    </form>
-  </section>
-
-  <footer class="footer">© 2025 Cloth. All rights reserved.</footer>
+    <input type="text" placeholder="Card Number">
+    <input type="text" placeholder="Expiry Date (MM/YY)">
+    <input type="text" placeholder="CVV">
+    <button onclick="pay()">Proceed to Pay</button>
+  </div>
 
   <script>
-    function goToThankYou(e) {
-      e.preventDefault();
-      localStorage.removeItem("cart"); // clear cart after purchase
-      window.location.href = "thankyou.html";
+    function pay(){
+      alert("Payment successful ✅");
+      window.location.href="thankyou.html";
     }
   </script>
-
-  <style>
-    .payment-form { max-width:400px; margin:auto; display:flex; flex-direction:column; text-align:left; }
-    .payment-form label { margin-top:1rem; }
-    .payment-form input { width:100%; padding:0.8rem; margin-top:0.3rem; border:1px solid #ccc; border-radius:6px; }
-  </style>
 </body>
 </html>
