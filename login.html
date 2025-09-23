@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Cloth</title>
+  <style>
+    body { display:flex; justify-content:center; align-items:center; height:100vh; background:#f4f4f4; font-family:sans-serif; }
+    .login-box { background:#fff; padding:30px; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.1); width:350px; text-align:center; }
+    h2 { margin-bottom:20px; }
+    input { width:100%; padding:12px; margin:10px 0; border:1px solid #ccc; border-radius:6px; }
+    button { width:100%; padding:12px; background:#111; color:#fff; border:none; border-radius:6px; cursor:pointer; }
+    button:hover { background:#ff6b6b; }
+    p { margin-top:15px; }
+    a { color:#ff6b6b; text-decoration:none; }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h2>Login</h2>
+    <input type="email" placeholder="Email" id="email">
+    <input type="password" placeholder="Password" id="password">
+    <button onclick="login()">Login</button>
+    <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+  </div>
+
+  <script>
+    function login(){
+      const email=document.getElementById("email").value;
+      const password=document.getElementById("password").value;
+      if(email && password){
+        localStorage.setItem("user", email);
+        alert("Login successful ✅");
+        const redirect = localStorage.getItem("redirectAfterLogin") || "index.html";
+        localStorage.removeItem("redirectAfterLogin");
+        window.location.href = redirect;
+      }else{
+        alert("Please fill in all fields.");
+      }
+    }
+  </script>
+</body>
+</html>
