@@ -2,24 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Thank You - Cloth</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <title>Thank You | Cloth</title>
+  <style>
+    body { font-family:sans-serif; background:#fdfdfd; display:flex; justify-content:center; align-items:center; min-height:100vh; text-align:center; }
+    .box { padding:40px; border-radius:10px; background:#fff; box-shadow:0 4px 8px rgba(0,0,0,0.1); }
+    h2 { font-size:28px; margin-bottom:10px; }
+    p { margin-bottom:20px; }
+    button { padding:12px 25px; border:none; background:#111; color:#fff; border-radius:6px; cursor:pointer; }
+    button:hover { background:#ff6b6b; }
+  </style>
 </head>
 <body>
-  <section class="thankyou">
-    <div class="box">
-      <h1>🎉 Thank You!</h1>
-      <p>Your order has been placed successfully.</p>
-      <button class="btn" onclick="window.location.href='index.html'">Back to Home</button>
-    </div>
-  </section>
-
-  <style>
-    .thankyou { display:flex; justify-content:center; align-items:center; height:100vh; background:linear-gradient(135deg, #e63946, #222); }
-    .box { background:#fff; padding:3rem; border-radius:12px; text-align:center; box-shadow:0 4px 12px rgba(0,0,0,0.3); }
-    .box h1 { color:#e63946; margin-bottom:1rem; }
-    .box p { margin-bottom:2rem; }
-  </style>
+  <div class="box">
+    <h2>🎉 Thank you for your purchase!</h2>
+    <p>Your order has been placed successfully.</p>
+    <button onclick="window.location.href='index.html'">Go to Home</button>
+  </div>
 </body>
 </html>
