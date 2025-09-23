@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Cart - Cloth</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">Cloth</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html#products">Shop</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="products">
+    <h2>Your Cart</h2>
+    <div id="cartItems" class="cart-items"></div>
+    <div id="cartTotal" class="cart-total"></div>
+    <button id="checkoutBtn" class="btn" style="margin-top:2rem; display:none;">Proceed to Checkout</button>
+  </section>
+
+  <footer class="footer">© 2025 Cloth. All rights reserved.</footer>
+
+  <script>
+    function renderCart() {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      let container = document.getElementById("cartItems");
+      let total = 0;
+      container.innerHTML = "";
+
+      if (cart.length === 0) {
+        container.innerHTML = "<p>Your cart is empty.</p>";
+        document.getElementById("checkoutBtn").style.display = "none";
+        document.getElementById("cartTotal").innerHTML = "";
+        return;
+      }
+
+      cart.forEach((item, index) => {
+        total += item.price * item.qty;
+        container.innerHTML += `
+          <div class="cart-item">
+            <span>${item.name} (x${item.qty})</span>
+            <span>$${item.price * item.qty}</span>
+            <button onclick="removeItem(${index})">❌</button>
+          </div>
+        `;
+      });
+
+      document.getElementById("cartTotal").innerHTML = `<h3>Total: $${total}</h3>`;
+      document.getElementById("checkoutBtn").style.display = "inline-block";
+    }
+
+    function removeItem(index) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      renderCart();
+    }
+
+    document.getElementById("checkoutBtn").addEventListener("click", () => {
+      window.location.href = "payment.html";
+    });
+
+    renderCart();
+  </script>
+
+  <style>
+    .cart-items { max-width:600px; margin:auto; text-align:left; }
+    .cart-item { display:flex; justify-content:space-between; align-items:center; padding:0.8rem; background:#fff; margin:0.5rem 0; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1); }
+    .cart-item button { background:none; border:none; font-size:1.2rem; cursor:pointer; color:#e63946; }
+    .cart-total { margin-top:1rem; text-align:center; font-size:1.2rem; }
+  </style>
+</body>
+</html>
